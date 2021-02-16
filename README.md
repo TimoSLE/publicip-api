@@ -1,14 +1,14 @@
 # PublicIP-API [![Go Report Card](https://goreportcard.com/badge/github.com/TimoSLE/go-dyndns)](https://goreportcard.com/report/github.com/TimoSLE/publicip-api)
 A simple HTTP API returning the API of the requesting client
 
-##Building
+## Building
 If you are using make you can build the executable with
 >make build
 
 Otherwise, you can use
 >go build ./...
 
-##Usage
+## Usage
 There are to command line flags which modify the functionality of the API
 
 Flag | Explanation | Default
