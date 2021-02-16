@@ -29,7 +29,7 @@ func main() {
 	http.HandleFunc("/", handler)
 	err := http.ListenAndServe(bind, nil)
 	if err != nil {
-		panic(err)
+		log.Printf("Encountered error %v", err)
 	}
 }
 
@@ -43,7 +43,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		ip := IP{IP: remoteAddr}
 		resp, err = json.Marshal(ip)
 		if err != nil {
-			panic(err)
+			log.Printf("Encountered error %v", err)
 		}
 		w.Header().Set("Content-Type", "application/json")
 		break
@@ -52,7 +52,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		ip := IP{IP: remoteAddr}
 		resp, err = xml.Marshal(ip)
 		if err != nil {
-			panic(err)
+			log.Printf("Encountered error %v", err)
 		}
 		w.Header().Set("Content-Type", "application/xml")
 		break
@@ -60,7 +60,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		remoteAddr := strings.Split(r.Header.Get(header), ",")[0]
 		err := r.Body.Close()
 		if err != nil {
-			panic(err)
+			log.Printf("Encountered error %v", err)
 		}
 		resp = []byte(remoteAddr)
 		w.Header().Set("Content-Type", "text/plain")
@@ -69,8 +69,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	_, err = w.Write(resp)
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
-		log.Println("Encountered Error: ")
-		log.Println(err)
+		log.Printf("Encountered error %v", err)
 	}
 }
 

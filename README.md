@@ -1,4 +1,4 @@
-# PublicIP-API [![Go Report Card](https://goreportcard.com/badge/github.com/TimoSLE/go-dyndns)](https://goreportcard.com/report/github.com/TimoSLE/publicip-api)
+# PublicIP-API [![Go Report Card](https://goreportcard.com/badge/github.com/TimoSLE/go-dyndns)](https://goreportcard.com/report/github.com/TimoSLE/publicip-api) ![Build](https://github.com/TimoSLE/publicip-api/workflows/build/badge.svg)
 A simple HTTP API returning the API of the requesting client
 
 ## Building
