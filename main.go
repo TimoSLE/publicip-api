@@ -9,12 +9,19 @@ import (
 	"strings"
 )
 
+//GitVersion is the current used git version
+var GitVersion = ""
+
+//GitBranch represents which Branch is currently running
+var GitBranch = ""
+
 var (
 	bind   = "127.0.0.1:8080"
 	header = "X-Real-IP"
 )
 
 func main() {
+	log.Printf("PublicIP-API Version %s, Git Branch %s", GitVersion, GitBranch)
 	flag.StringVar(&bind, "b", "127.0.0.1:8080", "Binding IP Address for the HTTP Server")
 	flag.StringVar(&header, "h", "X-Real-IP", "What Header will be used to retrieve the Clients IP Address")
 	flag.Parse()
@@ -67,6 +74,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//IP represents structure for marshalling the IP into xml and json
 type IP struct {
 	IP string `json:"ip"`
 }
